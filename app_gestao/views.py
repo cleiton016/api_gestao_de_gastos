@@ -3,9 +3,9 @@ from rest_framework import viewsets
 from rest_framework import permissions
 from app_gestao.serializers import *
 
-class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
+class UsuarioViewSet(viewsets.ModelViewSet):
+    queryset = Usuario.objects.all()
+    serializer_class = UsuarioSerializer()
     permission_classes = [permissions.IsAuthenticated]
 
 class GroupViewSet(viewsets.ModelViewSet):
@@ -13,28 +13,20 @@ class GroupViewSet(viewsets.ModelViewSet):
     serializer_class = GroupSerializer
     permission_classes = [permissions.IsAuthenticated]
 
-class CategoriasViewSet(viewsets.ModelViewSet):
-    queryset = Categorias.objects.all()
-    serializer_class = CategoriasSerializer
+class CategoriaViewSet(viewsets.ModelViewSet):
+    queryset = Categoria.objects.all()
+    serializer_class = CategoriaSerializer
     permission_classes = [permissions.IsAuthenticated]
 
-class GastosViewSet(viewsets.ModelViewSet):
-    queryset = Gastos.objects.all()
-    serializer_class = GastosSerializer
+class GastoViewSet(viewsets.ModelViewSet):
+    queryset = Gasto.objects.all()
+    serializer_class = GastoSerializer
     permission_classes = [permissions.IsAuthenticated]
 
-class BancosViewSet(viewsets.ModelViewSet):
-    queryset = Bancos.objects.all()
-    serializer_class = BancosSerializer
+class BancoViewSet(viewsets.ModelViewSet):
+    queryset = Banco.objects.all()
+    serializer_class = BancoSerializer
     permission_classes = [permissions.IsAuthenticated]
 
-class UserBancosViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.prefetch_related('bancos')
-    print(str(queryset.query))
-    serializer_class = UserSerializer
-    permission_classes = [permissions.IsAuthenticated]
-    def get_object(self):
-        queryset = self.queryset()
-        return get_object_or_404(queryset)
         
 

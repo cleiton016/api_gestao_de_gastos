@@ -3,26 +3,31 @@ from rest_framework import serializers
 from app_gestao.models import *
 
 
-class UserSerializer(serializers.ModelSerializer):
+class UsuarioSerializer(serializers.ModelSerializer):
     class Meta:
-        model = User
-        fields = ['url', 'username', 'email', 'bancos']
+        model = Usuario
+        fields = '__all__'
 
 class GroupSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Group
         fields = ['url', 'name']
 #-------------------------------------------------------------------#
-class CategoriasSerializer(serializers.HyperlinkedModelSerializer):
+class CategoriaSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = Categorias
-        fields = ['url', 'nome', 'slug', 'criado_em']
+        model = Categoria
+        fields = '__all__'
 
-class GastosSerializer(serializers.HyperlinkedModelSerializer):
+class GastoSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Gastos
-        fields = ['url' ,'usuario_id', 'categoria_id', 'data_referente', 'criado_em']
-class BancosSerializer(serializers.ModelSerializer):
+        model = Gasto
+        fields = '__all__'
+class BancoSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Bancos
+        model = Banco
+        fields = '__all__'
+
+class LancamentoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Lancamento
         fields = '__all__'
