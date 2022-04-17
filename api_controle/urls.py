@@ -4,7 +4,7 @@ from rest_framework import routers
 from app_gestao import views
 
 router = routers.DefaultRouter()
-router.register(r'users', views.UsuarioViewSet)
+router.register(r'users', views.UserViewSet)
 router.register(r'groups', views.GroupViewSet)
 router.register(r'categorias', views.CategoriaViewSet)
 router.register(r'gastos', views.GastoViewSet)
