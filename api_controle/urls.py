@@ -6,9 +6,13 @@ from app_gestao import views
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
 router.register(r'groups', views.GroupViewSet)
+router.register(r'permission', views.PermissionSiewSet)
+#------------------------------------------------------#
+router.register(r'usuario', views.UsuarioViewSet)
 router.register(r'categorias', views.CategoriaViewSet)
 router.register(r'gastos', views.GastoViewSet)
 router.register(r'bancos', views.BancoViewSet)
+router.register('lancamento', views.LancamentoViewSer, basename='lancamento')
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
