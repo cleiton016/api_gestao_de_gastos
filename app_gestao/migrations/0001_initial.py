@@ -86,7 +86,6 @@ class Migration(migrations.Migration):
                 ('criado_em', models.DateTimeField(auto_created=True)),
                 ('ultima_alteracao', models.DateTimeField(auto_now=True)),
                 ('banco_fk', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='app_gestao.banco')),
-                ('gasto_fk', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='app_gestao.gasto')),
                 ('usuario_fk', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='app_gestao.usuario')),
             ],
             options={
