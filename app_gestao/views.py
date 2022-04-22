@@ -33,13 +33,19 @@ class GastoViewSet(viewsets.ModelViewSet):
     queryset = Gasto.objects.all()
     serializer_class = GastoSerializer
     permission_classes = [permissions.IsAuthenticated]
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['lancamento_fk', 'categoria_fk']
 
 class BancoViewSet(viewsets.ModelViewSet):
     queryset = Banco.objects.all()
     serializer_class = BancoSerializer
     permission_classes = [permissions.IsAuthenticated]
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['usuario_fk']
+    
 class LancamentoViewSer(viewsets.ModelViewSet):
-    queryset = Lancamento.objects.all()
+    queryset = Lancamento.objects.all().order_by('ano','mes')
+    
     serializer_class = LancamentoSerializer
     permission_classes = [permissions.IsAuthenticated]
     filter_backends = [DjangoFilterBackend]
