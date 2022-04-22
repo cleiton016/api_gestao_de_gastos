@@ -75,9 +75,24 @@ class BancoSerializer(serializers.ModelSerializer):
     read_only_fields = ['criado_em', 'ultima_alteracao']
 
 class LancamentoSerializer(serializers.ModelSerializer):
-    
+    class ChoiceField(serializers.ChoiceField):
+        def to_representation(self, obj):
+            if obj == '' and self.allow_blank:
+                return obj
+            return self._choices[obj]
+        def to_internal_value(self, data):
+            # To support inserts with the value
+            if data == '' and self.allow_blank:
+                return ''
+
+            for key, val in self._choices.items():
+                if val == data:
+                    return key
+            self.fail('invalid_choice', input=data)
+
+    mes = ChoiceField(choices=MES_LANCAMENTO.choices)
     class Meta:
         model = Lancamento
-        fields = '__all__'
+        fields = ['id', 'mes', 'ano', 'criado_em', 'ultima_alteracao', 'usuario_fk', 'banco_fk']
     read_only_fields = ['criado_em', 'ultima_alteracao']
 
