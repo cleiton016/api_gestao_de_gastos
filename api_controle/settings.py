@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import environ, os
 from pathlib import Path
+from datetime import timedelta
 env = environ.Env(
     # set casting, default value
     DEBUG=(bool, False)
@@ -57,6 +58,10 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'api_controle.urls'
+
+CSRF_COOKIE_SECURE = True
+
+SESSION_COOKIE_SECURE = True
 
 TEMPLATES = [
     {
@@ -125,9 +130,11 @@ LANGUAGE_CODE = 'pt-br'
 
 TIME_ZONE = 'America/Araguaina'
 
-USE_I18N = True
+DATETIME_FORMAT="%Y-%m-%d%H:%M:%S"
 
-USE_TZ = True
+USE_I18N = False
+
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
@@ -143,7 +150,18 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
+    'DEFAULT_AUTHENTICATION_CLASSES':(
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ),
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
+}
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'SIGNIG_KEY':env('SECRET_KEY_JWT'),
 }
