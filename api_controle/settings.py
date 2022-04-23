@@ -126,11 +126,11 @@ USE_TZ = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-MEDIA_ROOT = '../api_controle/media'
+MEDIA_ROOT = '../api_gestao_de_gastos/media'
 
 MEDIA_URL = '/media/'
 
-STATIC_ROOT = '../api_controle/static'
+STATIC_ROOT = '../api_gestao_de_gastos/static'
 
 STATIC_URL = '/static/'
 
