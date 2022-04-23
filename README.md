@@ -8,6 +8,8 @@
 
 `pip install -r requirements.txt`
 
+Caso ocorra algum erro na instalação do `psycopg2` [aqui](https://cursos.alura.com.br/forum/topico-erro-ao-instalar-psycopg2-117198) esta uma possivel solução
+
 #### Criando Arquivo env
 
 Na base do projeto crie uma arquivo chamado `.env`.
