@@ -1,2 +1,4 @@
 *.pyc
 .env
+*.bat
+/static
